@@ -27,19 +27,35 @@ class VendingMachine {
 
   addMoney(coin) {
     //validate coin
-    //  increase total 
+    if (this.acceptableCurrency[coin]) {
+      //  increase total 
+      this.transactionTotal += this.acceptableCurrency[coin]
+      return this.transactionTotal.toFixed(2)
+    }
     //return total
+    return 'invalid coin'
   }
+
   vend(foodId) {
     //find item
-    //if transactionTotal >= item.price && item.quantity > 0
-    //  item.quantity --
-    //  transactionTotal -= item.price
-    //  machineTotal += item.price
-    //return item.img
+    for (let i = 0; i < this.foodItems.length; i++) {
+      const item = this.foodItems[i];
+      if (item.id == foodId) {
+        if (this.transactionTotal >= item.price && item.quantity > 0) {
+          item.quantity--
+          this.transactionTotal -= item.price
+          this.machineTotal += item.price
+          return {
+            img: item.img,
+            total: this.transactionTotal.toFixed(2)
+          }
+        }
+      }
+    }
   }
+
   giveChange() {
-    //transactionTotal = 0
+    this.transactionTotal = 0
   }
 
   getItems() {

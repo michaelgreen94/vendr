@@ -4,9 +4,20 @@
 
 #food {
   display: flex;
+  justify-content: center;
 }
 
 .food-item {
   margin: 3%;
   text-align: center;
+}
+
+.money  {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.money button {
+  margin: 5px;
 }

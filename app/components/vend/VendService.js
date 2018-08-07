@@ -9,17 +9,22 @@ class VendService {
   constructor() {
 
   }
+
+  vend(foodId) {
+    return vm.vend(foodId)
+  }
+
   getItems() {
     return vm.getItems()
   }
+
   addMoney(type) {
-    console.log('service: ', type)
-    //confirm currency is acceptable
-    if (vm.acceptableCurrency[type]) {
-      //add to total
-      vm.transactionTotal += vm.acceptableCurrency[type]
-    }
-    return vm.transactionTotal.toFixed(2)
+    console.log('service ', type);
+    return vm.addMoney(type)
+  }
+
+  giveChange() {
+    vm.giveChange()
   }
 
 }
