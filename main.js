@@ -1,9 +1,10 @@
 import VendController from './app/components/vend/VendController.js'
 
 
+//used to initialize and contain all controllers
 class App {
   constructor() {
-    this.contollers = {
+    this.controllers = {
       vendController: new VendController()
     }
   }
