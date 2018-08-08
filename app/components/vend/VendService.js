@@ -27,6 +27,10 @@ class VendService {
     vm.giveChange()
   }
 
+  steal() {
+    vm.steal()
+  }
+
 }
 
 

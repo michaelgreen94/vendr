@@ -9,6 +9,10 @@ function drawTotal(total) {
   document.getElementById('total').innerText = total
 }
 
+function safeBox(total) {
+  document.getElementById('total2').innerText = total
+}
+
 function drawItems() {
   let items = vendService.getItems()
   //draw the items to the page
@@ -27,10 +31,6 @@ function drawItems() {
 
 function drawVend(img) {
   document.getElementById('vended-item').setAttribute('src', img)
-}
-
-function drawMachineTotal() {
-  console.log()
 }
 
 //PUBLIC PARTS
@@ -56,6 +56,7 @@ class VendController {
     if (result) {
       drawTotal(result.total)
       drawVend(result.img)
+      safeBox(result.safe)
     }
   }
 
@@ -63,6 +64,12 @@ class VendController {
     vendService.giveChange()
     drawTotal('0.00')
   }
+
+  steal() {
+    vendService.steal()
+    safeBox('0.00')
+  }
 }
+
 
 export default VendController

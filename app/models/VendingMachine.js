@@ -22,7 +22,7 @@ class VendingMachine {
       price: .75,
       quantity: 15
     }]
-    this.machineTotal = 10
+    this.machineTotal = 0
   }
 
   addMoney(coin) {
@@ -43,11 +43,12 @@ class VendingMachine {
       if (item.id == foodId) {
         if (this.transactionTotal >= item.price && item.quantity > 0) {
           item.quantity--
-          this.transactionTotal -= item.price
+            this.transactionTotal -= item.price
           this.machineTotal += item.price
           return {
             img: item.img,
-            total: this.transactionTotal.toFixed(2)
+            total: this.transactionTotal.toFixed(2),
+            safe: this.machineTotal.toFixed(2)
           }
         }
       }
@@ -58,10 +59,14 @@ class VendingMachine {
     this.transactionTotal = 0
   }
 
+  steal() {
+    this.machineTotal = 0
+  }
+
   getItems() {
     return this.foodItems
   }
-}
 
+}
 
 export default VendingMachine
